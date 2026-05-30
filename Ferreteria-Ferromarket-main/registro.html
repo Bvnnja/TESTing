@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Ferromarket</title>
+    <link rel="icon" href="img/ferromarket.png" type="image/png">
+    <link rel="stylesheet" href="css/css-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .pagina-registro-body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .contenedor-registro {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+        }
+        .registro-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        .registro-logo img {
+            height: 60px;
+            width: auto;
+        }
+        .registro-titulo {
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 0 0 25px 0;
+            color: #222;
+        }
+        .btn-registro-ingresar {
+            background-color: var(--color-principal);
+            color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+            margin-top: 15px;
+            width: 100%;
+            display: block;
+            text-align: center;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+        }
+        .btn-registro-ingresar:hover {
+            background-color: yellow;
+            color: #000000;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+        }
+        .btn-registro-ingresar:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+        }
+        .registro-pie {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 25px;
+        }
+        .registro-pie a {
+            color: var(--color-principal);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .registro-pie a:hover {
+            text-decoration: underline;
+            color: #cc9900;
+        }
+    </style>
+</head>
+<body class="pagina-registro-body">
+    <div class="contenedor-registro">
+        <div class="registro-logo">
+            <a href="index.html">
+                <img src="img/ferromarket.png" alt="Logo de Ferromarket">
+            </a>
+        </div>
+        <h2 class="registro-titulo"><i class="fa fa-user-plus"></i> Crear Cuenta</h2>
+        
+        <form id="formulario-registro" class="formulario-login">
+            <div class="campo-formulario">
+                <label for="registro-nombre">Nombre Completo</label>
+                <input type="text" id="registro-nombre" required placeholder="Ingresa tu nombre">
+            </div>
+            <div class="campo-formulario">
+                <label for="registro-email">Correo Electrónico</label>
+                <input type="email" id="registro-email" required placeholder="correo@ejemplo.com">
+            </div>
+            <div class="campo-formulario">
+                <label for="registro-password">Contraseña</label>
+                <input type="password" id="registro-password" required placeholder="Crea una contraseña (mín. 6 caracteres)" minlength="6">
+            </div>
+            <div class="campo-formulario">
+                <label for="registro-password-confirm">Confirmar Contraseña</label>
+                <input type="password" id="registro-password-confirm" required placeholder="Confirma tu contraseña" minlength="6">
+            </div>
+            
+            <button type="submit" class="btn-registro-ingresar">Registrarse</button>
+        </form>
+        <div class="registro-pie">
+            <p>¿Ya tienes cuenta? <a href="index.html?login=true">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://fhvinwdaaybnwxpsivsi.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZodmlud2RhYXlibnd4cHNpdnNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzNjg2OTMsImV4cCI6MjA4ODk0NDY5M30.S0wYDW7utGuqRRCMu-k9w8FQ9mAWkk-92aX_GzZJ08E';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        document.getElementById('formulario-registro').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('registro-nombre').value;
+            const email = document.getElementById('registro-email').value;
+            const pass = document.getElementById('registro-password').value;
+            const passConfirm = document.getElementById('registro-password-confirm').value;
+            if (pass !== passConfirm) {
+                alert('Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.');
+                return;
+            }
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Registrando...';
+            submitBtn.disabled = true;
+            try {
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: pass,
+                    options: {
+                        data: {
+                            full_name: nombre
+                        }
+                    }
+                });
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                if (error) {
+                    alert('Error al registrar usuario: ' + error.message);
+                    return;
+                }
+                alert('¡Registro exitoso! Ahora puedes iniciar sesión con tus credenciales.');
+                window.location.href = 'index.html?login=true';
+            } catch (err) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('Ocurrió un error inesperado: ' + err.message);
+            }
+        });
+    </script>
+</body>
+</html>
