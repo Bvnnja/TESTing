@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Personales - Ferromarket</title>
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Estilos globales y específicos -->
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/perfil.css">
+</head>
+<body class="pagina-perfil-body">
+
+    <div class="contenedor-perfil">
+        <div class="perfil-header-nav">
+            <a href="../index.html" class="btn-volver"><i class="fa fa-arrow-left"></i> Volver a la tienda</a>
+        </div>
+        <div class="perfil-header">
+            <div class="perfil-logo">
+                <img src="/assets/img/ui/ferromarket.png" alt="Ferromarket Logo">
+            </div>
+            <h2 class="perfil-titulo"><i class="fa fa-id-card-o"></i> Datos Personales</h2>
+        </div>
+
+        <form id="formulario-perfil" class="formulario-perfil">
+            <!-- Sección de información básica -->
+            <div class="perfil-seccion">
+                <h3><i class="fa fa-user"></i> Información de Cuenta</h3>
+                
+                <div class="campo-formulario">
+                    <label for="perfil-email">Correo Electrónico</label>
+                    <input type="email" id="perfil-email" required placeholder="correo@ejemplo.com" title="Si cambias tu correo, recibirás un mensaje de confirmación en ambas direcciones.">
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="perfil-telefono">Teléfono</label>
+                    <input type="tel" id="perfil-telefono" required placeholder="+56912345678" pattern="^\+569[0-9]{8}$" title="El formato debe ser +569 seguido de 8 dígitos numéricos. Ejemplo: +56912345678">
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="perfil-nombre">Nombre Completo</label>
+                    <input type="text" id="perfil-nombre" required placeholder="Tu nombre y apellido">
+                </div>
+            </div>
+
+            <!-- Sección de Seguridad -->
+            <div class="perfil-seccion">
+                <h3><i class="fa fa-lock"></i> Seguridad</h3>
+                
+                <div class="campo-formulario">
+                    <label for="perfil-password-nueva">Nueva Contraseña (Opcional)</label>
+                    <input type="password" id="perfil-password-nueva" placeholder="Solo si deseas cambiarla">
+                    <small style="color: #666; display: block; margin-top: 5px;">Déjalo en blanco si no quieres cambiar tu contraseña actual.</small>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-guardar-perfil" id="btn-guardar-perfil"><i class="fa fa-save"></i> Guardar Cambios</button>
+        </form>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config/supabase-config.js"></script>
+    <script src="../js/views/perfil.js"></script>
+</body>
+</html>

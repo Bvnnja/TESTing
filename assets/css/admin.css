@@ -1,0 +1,429 @@
+.pagina-gestion-body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .contenedor-gestion {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+        }
+        .gestion-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .gestion-titulo {
+            font-size: 2.2rem;
+            margin: 0;
+            color: #222;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .gestion-acciones-top {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-volver-catalogo {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-volver-catalogo:hover {
+            background-color: #f1f3f4;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+        }
+        /* Neubrutalist table style */
+        .tabla-productos-wrapper {
+            overflow-x: auto;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+            margin-bottom: 20px;
+        }
+        .tabla-productos-gestion {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-family: inherit;
+        }
+        .tabla-productos-gestion th,
+        .tabla-productos-gestion td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .tabla-productos-gestion tr:last-child td {
+            border-bottom: none;
+        }
+        .tabla-productos-gestion th {
+            background-color: #f1f3f4;
+            font-weight: bold;
+            color: #000000;
+            border-bottom: 2px solid #000000;
+        }
+        .tabla-img-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .badge-categoria-gestion {
+            background-color: #e2e3e5;
+            color: #383d41;
+            border: 1px solid #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .tabla-acciones {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-tabla-editar {
+            background-color: #ffc107;
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+        }
+        .btn-tabla-editar:hover {
+            background-color: yellow;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+        }
+        .btn-tabla-eliminar {
+            background-color: #dc3545;
+            color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+        }
+        .btn-tabla-eliminar:hover {
+            background-color: #db4437;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+        }
+        .pantalla-carga-gestion {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #555;
+        }
+        /* Custom Modal Form */
+        .modal-gestion-avanzado {
+            max-width: 520px !important;
+        }
+.pagina-gestion-body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .contenedor-gestion {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+        }
+        .gestion-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .gestion-titulo {
+            font-size: 2.2rem;
+            margin: 0;
+            color: #222;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .gestion-acciones-top {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-volver-catalogo {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-volver-catalogo:hover {
+            background-color: #f1f3f4;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+        }
+        /* Neubrutalist table style */
+        .tabla-productos-wrapper {
+            overflow-x: auto;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+            margin-bottom: 20px;
+        }
+        .tabla-productos-gestion {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-family: inherit;
+        }
+        .tabla-productos-gestion th,
+        .tabla-productos-gestion td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .tabla-productos-gestion tr:last-child td {
+            border-bottom: none;
+        }
+        .tabla-productos-gestion th {
+            background-color: #f1f3f4;
+            font-weight: bold;
+            color: #000000;
+            border-bottom: 2px solid #000000;
+        }
+        .badge-rol-gestion {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .badge-rol-gestion.admin {
+            background-color: #ffc107;
+            color: black;
+        }
+        .badge-estado-gestion {
+            background-color: #28a745;
+            color: white;
+            border: 1px solid #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .badge-estado-gestion.inactivo {
+            background-color: #dc3545;
+        }
+        .tabla-acciones {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-tabla-ver-compras {
+            background-color: var(--color-principal);
+            color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-tabla-ver-compras:hover {
+            background-color: yellow;
+            color: #000;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+        }
+        .btn-tabla-eliminar {
+            background-color: #dc3545;
+            color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            font-family: 'Outfit', sans-serif;
+        }
+        .btn-tabla-eliminar:hover {
+            background-color: #db4437;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+        }
+        .pantalla-carga-gestion {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #555;
+        }
+        /* Neubrutalist Modal para Compras */
+        .modal-compras-avanzado {
+            max-width: 650px !important;
+            padding: 40px 30px !important;
+            border-radius: 20px;
+            border: 2px solid #000;
+            box-shadow: 8px 8px 0px #000;
+            background: #fff;
+        }
+        .compras-card-pedido {
+            border: 2px solid #000;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            box-shadow: 4px 4px 0px #000;
+        }
+        .compras-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .pedido-id-badge {
+            background-color: #f1f3f4;
+            border: 1px solid #000;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        .compras-detalles {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .compras-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .status-badge {
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid #000;
+            font-size: 0.8rem;
+        }
+        .status-badge.entregado {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .status-badge.transito {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .status-badge.pendiente {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        /* Responsive Mobile Table */
+        @media (max-width: 768px) {
+            .tabla-productos-wrapper {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+            }
+            .tabla-productos-gestion thead {
+                display: none;
+            }
+            .tabla-productos-gestion tbody tr {
+                display: block;
+                margin-bottom: 20px;
+                border: 2px solid #000;
+                border-radius: 12px;
+                background: #fff;
+                box-shadow: 4px 4px 0px #000;
+            }
+            .tabla-productos-gestion tbody td {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-bottom: 1px dashed #ccc;
+                padding: 12px 15px;
+                gap: 5px;
+            }
+            .tabla-productos-gestion tbody td:last-child {
+                border-bottom: none;
+            }
+            .tabla-productos-gestion tbody td::before {
+                content: attr(data-label);
+                font-weight: 800;
+                color: #000;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                margin-bottom: 5px;
+            }
+            .td-acciones {
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }

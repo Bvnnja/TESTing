@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Ferromarket</title>
+    <meta name="description" content="Completa tu compra en Ferromarket. Elige tu método de pago y confirma tu pedido de productos de ferretería.">
+    <link rel="icon" href="../assets/img/ui/ferromarket.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/checkout.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="checkout-topbar">
+        <a href="../index.html" class="checkout-topbar-logo">
+            <img src="../assets/img/ui/ferromarket.png" alt="Logo Ferromarket">
+            <span>Ferro<em>market</em></span>
+        </a>
+        <div class="checkout-topbar-pasos">
+            <span>Carrito</span>
+            <i class="fa fa-angle-right"></i>
+            <span class="paso-activo">Pago</span>
+            <i class="fa fa-angle-right"></i>
+            <span>Confirmación</span>
+        </div>
+    </div>
+
+    <!-- Spinner de carga -->
+    <div class="spinner-overlay" id="spinner-overlay">
+        <div class="spinner-caja">
+            <i class="fa fa-spinner fa-spin"></i>
+            <p>Procesando tu pedido...</p>
+        </div>
+    </div>
+
+    <!-- Wrapper principal -->
+    <div class="checkout-wrapper" id="checkout-wrapper">
+
+        <!-- PANTALLA VACÍO -->
+        <div class="carrito-vacio-checkout" id="carrito-vacio" style="display:none;">
+            <i class="fa fa-shopping-cart"></i>
+            <h2>Tu carrito está vacío</h2>
+            <p>No hay productos para finalizar la compra.</p>
+            <a href="../index.html" class="btn-volver-catalogo-exito"><i class="fa fa-arrow-left"></i> Volver al Catálogo</a>
+        </div>
+
+        <!-- PANTALLA ÉXITO -->
+        <div class="pantalla-exito" id="pantalla-exito">
+            <div class="exito-icono"><i class="fa fa-check"></i></div>
+            <h1 class="exito-titulo">¡Pedido Confirmado!</h1>
+            <p class="exito-subtitulo">Gracias por comprar en Ferromarket. Tu pedido fue registrado exitosamente.</p>
+            <div class="exito-orden-box">
+                <span class="exito-orden-label">Código de Orden</span>
+                <span class="exito-orden-codigo" id="exito-codigo-orden">FM-0000</span>
+            </div>
+            <br>
+            <a href="../index.html" class="btn-volver-catalogo-exito"><i class="fa fa-home"></i> Volver al Catálogo</a>
+        </div>
+
+        <!-- ====== COLUMNA IZQUIERDA ====== -->
+        <div id="columna-izquierda">
+
+            <!-- Resumen de Productos -->
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">
+                    <i class="fa fa-list-ul"></i> Resumen de tu Pedido
+                </h2>
+                <div id="lista-productos-checkout">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">
+                    <i class="fa fa-credit-card"></i> Método de Pago
+                </h2>
+                <div class="metodos-pago-grid">
+
+                    <!-- Tarjeta (Comentado temporalmente)
+                    <label class="metodo-pago-opcion" id="opcion-tarjeta" for="radio-tarjeta">
+                        <input type="radio" name="metodo_pago" id="radio-tarjeta" value="Tarjeta" class="metodo-radio">
+                        <div class="metodo-icono"><i class="fa fa-credit-card"></i></div>
+                        <div class="metodo-info">
+                            <h4>Tarjeta de Crédito / Débito</h4>
+                            <p>Visa, Mastercard, American Express</p>
+                        </div>
+                        <div class="metodo-check"><i class="fa fa-check"></i></div>
+                    </label>
+                    -->
+
+                    <!-- Transferencia (Comentado temporalmente)
+                    <label class="metodo-pago-opcion" id="opcion-transferencia" for="radio-transferencia">
+                        <input type="radio" name="metodo_pago" id="radio-transferencia" value="Transferencia" class="metodo-radio">
+                        <div class="metodo-icono"><i class="fa fa-university"></i></div>
+                        <div class="metodo-info">
+                            <h4>Transferencia Bancaria</h4>
+                            <p>Transferencia directa a nuestra cuenta</p>
+                        </div>
+                        <div class="metodo-check"><i class="fa fa-check"></i></div>
+                    </label>
+                    -->
+
+                    <!-- Efectivo -->
+                    <label class="metodo-pago-opcion" id="opcion-efectivo" for="radio-efectivo">
+                        <input type="radio" name="metodo_pago" id="radio-efectivo" value="Efectivo" class="metodo-radio">
+                        <div class="metodo-icono"><i class="fa fa-money"></i></div>
+                        <div class="metodo-info">
+                            <h4>Efectivo en Tienda</h4>
+                            <p>Paga al retirar tu pedido en sucursal</p>
+                        </div>
+                        <div class="metodo-check"><i class="fa fa-check"></i></div>
+                    </label>
+
+                </div>
+
+                <!-- Formulario dinámico según método -->
+                <!-- Formularios de Tarjeta y Transferencia (Comentados temporalmente)
+                <div class="form-pago-contenedor" id="form-tarjeta" style="display:none;">
+                    <div class="card-visual" id="card-visual">
+                        <div class="card-visual-chip"></div>
+                        <div class="card-visual-numero" id="cv-numero">•••• •••• •••• ••••</div>
+                        <div class="card-visual-footer">
+                            <div>
+                                <span class="card-visual-label">Titular</span>
+                                <span class="card-visual-valor" id="cv-nombre">NOMBRE APELLIDO</span>
+                            </div>
+                            <div>
+                                <span class="card-visual-label">Vence</span>
+                                <span class="card-visual-valor" id="cv-vence">MM/AA</span>
+                            </div>
+                            <div class="card-tipo-logo"><i class="fa fa-credit-card"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-pago-grid">
+                        <div class="form-campo campo-full">
+                            <label for="numero-tarjeta">Número de Tarjeta</label>
+                            <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number">
+                        </div>
+                        <div class="form-campo campo-full">
+                            <label for="nombre-titular">Nombre del Titular</label>
+                            <input type="text" id="nombre-titular" placeholder="Como aparece en la tarjeta" autocomplete="cc-name">
+                        </div>
+                        <div class="form-campo">
+                            <label for="fecha-expiracion">Fecha de Vencimiento</label>
+                            <input type="text" id="fecha-expiracion" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp">
+                        </div>
+                        <div class="form-campo">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="•••" maxlength="4" autocomplete="cc-csc">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-pago-contenedor" id="form-transferencia" style="display:none;">
+                    <div class="transferencia-box">
+                        <h4><i class="fa fa-university" style="color:#1fb546;"></i> Datos de Transferencia</h4>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">Banco</span>
+                            <span class="tf-valor">Banco Estado</span>
+                        </div>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">Tipo de cuenta</span>
+                            <span class="tf-valor">Cuenta Corriente</span>
+                        </div>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">N° Cuenta</span>
+                            <span class="tf-valor">
+                                12345678
+                                <button class="btn-copiar" onclick="copiarTexto('12345678', this)"><i class="fa fa-copy"></i> Copiar</button>
+                            </span>
+                        </div>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">RUT</span>
+                            <span class="tf-valor">
+                                76.543.210-9
+                                <button class="btn-copiar" onclick="copiarTexto('76543210-9', this)"><i class="fa fa-copy"></i> Copiar</button>
+                            </span>
+                        </div>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">Razón Social</span>
+                            <span class="tf-valor">Ferromarket SpA</span>
+                        </div>
+                        <div class="transferencia-fila">
+                            <span class="tf-label">Correo</span>
+                            <span class="tf-valor">pagos@ferromarket.cl</span>
+                        </div>
+                        <p style="margin-top:14px; font-size:0.82rem; color:#888; border-top:1px dashed #e0e0e0; padding-top:12px;">
+                            <i class="fa fa-info-circle"></i> Después de transferir, envía el comprobante a <strong>pagos@ferromarket.cl</strong> indicando tu código de orden.
+                        </p>
+                    </div>
+                </div>
+                -->
+
+                <div class="form-pago-contenedor" id="form-efectivo" style="display:none;">
+                    <div class="efectivo-box">
+                        <h4><i class="fa fa-map-marker"></i> Retiro en Tienda</h4>
+                        <p><strong>Dirección:</strong> PARCELA 10, SECTOR LA VICTORIA, LIMACHE, Chile</p>
+                        <p><strong>Horario de retiro:</strong> Lunes a Viernes 8:00 AM – 6:00 PM · Sábado 9:00 AM – 2:00 PM </p>
+                        <p><i class="fa fa-info-circle"></i> Trae tu <strong>código de orden</strong> y tu cédula de identidad. El pago se realiza en caja al momento del retiro.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ====== PANEL DERECHO: RESUMEN ====== -->
+        <div class="resumen-panel" id="columna-derecha">
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">
+                    <i class="fa fa-shopping-bag"></i> Tu Orden
+                </h2>
+                <div id="resumen-lineas">
+                    <!-- Dinámico -->
+                </div>
+                <div class="resumen-linea total">
+                    <span>TOTAL</span>
+                    <span id="resumen-total">$0</span>
+                </div>
+                <div id="resumen-metodo-badge" style="display:none;">
+                    <span class="resumen-metodo-badge" id="badge-metodo-texto"><i class="fa fa-check-circle"></i> Sin seleccionar</span>
+                </div>
+                <button class="btn-confirmar-pedido" id="btn-confirmar-pedido" disabled>
+                    <i class="fa fa-lock"></i> Confirmar Pedido
+                </button>
+                <a href="../index.html" class="btn-cancelar-pedido">
+                    <i class="fa fa-arrow-left"></i> Cancelar
+                </a>
+                <div class="badge-seguridad">
+                    <i class="fa fa-shield"></i> Pago 100% seguro y encriptado
+                </div>
+            </div>
+        </div>
+
+    </div><!-- fin checkout-wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config/supabase-config.js"></script>
+    <script src="../js/views/checkout.js"></script>
+</body>
+</html>
+
+

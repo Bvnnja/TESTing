@@ -1,0 +1,233 @@
+/* ===== COMPRAS PAGE CSS (Neo-Brutalism) ===== */
+
+.contenedor-compras {
+    max-width: 800px; /* Un poco más ancho que el perfil para acomodar la tabla o lista */
+}
+
+/* Lista de pedidos */
+.compras-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.compra-card {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 4px 4px 0px #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.compra-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #1fb546;
+}
+
+.compra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.compra-codigo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.compra-fecha {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.compra-detalles-mini {
+    margin-top: 5px;
+    display: flex;
+    gap: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.compra-estado {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    border: 2px solid #000;
+    text-transform: uppercase;
+}
+
+.estado-pendiente {
+    background-color: #f1c40f;
+    color: #000;
+}
+
+.estado-completado {
+    background-color: #1fb546;
+    color: #fff;
+}
+
+.estado-cancelado {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.btn-ver-detalle {
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px #1fb546;
+    transition: all 0.2s ease;
+}
+
+.btn-ver-detalle:hover {
+    background: #1fb546;
+    color: #000;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+/* Modal Detalle Compra */
+.modal-detalle-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-detalle-box {
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 16px;
+    box-shadow: 8px 8px 0px #000;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.btn-cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4d4d;
+    color: #fff;
+    border: 2px solid #000;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-cerrar-modal:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000;
+}
+
+.modal-detalle-titulo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #000;
+}
+
+.detalle-info-basica {
+    background: #f0f2f5;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 0px #000;
+}
+
+.detalle-info-basica p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.detalle-info-basica p:last-child {
+    margin-bottom: 0;
+}
+
+.badge-estado {
+    padding: 2px 6px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.detalle-productos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.detalle-producto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px dashed #000;
+    border-radius: 8px;
+}
+
+.dp-nombre {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.dp-cantidad {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.dp-subtotal {
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+}
+
+.detalle-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1fb546;
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    box-shadow: 4px 4px 0px #000;
+}

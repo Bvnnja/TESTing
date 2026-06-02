@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Compras - Ferromarket</title>
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Estilos globales y específicos -->
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/perfil.css">
+    <link rel="stylesheet" href="../assets/css/compras.css">
+</head>
+<body class="pagina-perfil-body">
+
+    <div class="contenedor-perfil contenedor-compras">
+        <div class="perfil-header-nav">
+            <a href="../index.html" class="btn-volver"><i class="fa fa-arrow-left"></i> Volver a la tienda</a>
+        </div>
+        <div class="perfil-header">
+            <div class="perfil-logo">
+                <img src="../assets/img/ui/ferromarket.png" alt="Ferromarket Logo" style="filter: brightness(0); width: 80px;">
+            </div>
+            <h2 class="perfil-titulo"><i class="fa fa-shopping-bag"></i> Historial de Compras</h2>
+        </div>
+
+        <div class="compras-lista" id="lista-compras-container">
+            <!-- Cargando... -->
+            <div style="text-align: center; padding: 40px;">
+                <i class="fa fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                <p style="margin-top: 10px; font-weight: 600;">Cargando tus compras...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalles de Compra -->
+    <div class="modal-detalle-overlay" id="modal-detalle-compra" style="display: none;">
+        <div class="modal-detalle-box">
+            <button class="btn-cerrar-modal" id="btn-cerrar-detalle"><i class="fa fa-times"></i></button>
+            <h3 class="modal-detalle-titulo">Detalle del Pedido <span id="detalle-codigo-orden">FM-000000</span></h3>
+            
+            <div class="detalle-info-basica">
+                <p><strong>Fecha:</strong> <span id="detalle-fecha">--</span></p>
+                <p><strong>Estado:</strong> <span class="badge-estado" id="detalle-estado">--</span></p>
+                <p><strong>Método de pago:</strong> <span id="detalle-pago">--</span></p>
+            </div>
+
+            <div class="detalle-productos-lista" id="detalle-productos-lista">
+                <!-- Dinamico -->
+            </div>
+
+            <div class="detalle-total">
+                <span>Total Pagado:</span>
+                <span id="detalle-total-monto">$0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config/supabase-config.js"></script>
+    <script src="../js/views/compras.js"></script>
+</body>
+</html>

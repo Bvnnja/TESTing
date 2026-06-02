@@ -1,0 +1,174 @@
+.pagina-perfil-body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.contenedor-perfil {
+    width: 100%;
+    max-width: 550px;
+    background: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+}
+
+.perfil-header-nav {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.perfil-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.btn-volver {
+    display: inline-block;
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #000;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    box-shadow: 2px 2px 0px #000;
+    background: #fff;
+}
+
+.btn-volver:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000;
+    background: #f0f0f0;
+}
+
+.btn-volver:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.perfil-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.perfil-logo img {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+}
+
+.perfil-titulo {
+    font-size: 1.6rem;
+    margin: 0;
+    color: #222;
+}
+
+.perfil-seccion {
+    border: 2px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+
+.perfil-seccion h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #444;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.btn-guardar-perfil {
+    background-color: var(--color-principal);
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Outfit', sans-serif;
+    width: 100%;
+    display: block;
+    text-align: center;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+.btn-guardar-perfil:hover {
+    background-color: yellow;
+    color: #000000;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+}
+
+.btn-guardar-perfil:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+/* --- Notificaciones Toast --- */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.toast {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 4px 4px 0px #000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1rem;
+    max-width: 350px;
+    line-height: 1.4;
+}
+
+.toast.mostrar {
+    transform: translateX(0);
+}
+
+.toast.error {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.toast.exito {
+    background-color: var(--color-principal, #1fb546);
+    color: white;
+}
+
+.toast.cargando {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* --- Validaciones Visuales --- */
+.campo-formulario input:not(:placeholder-shown):invalid {
+    border-color: #ff4d4d;
+    background-color: #fff0f0;
+    outline-color: #ff4d4d;
+}

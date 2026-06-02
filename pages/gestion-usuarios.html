@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Ferromarket</title>
+    <link rel="icon" href="../assets/img/ui/ferromarket.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="pagina-gestion-body">
+    <!-- Verificación de Seguridad Inicial -->
+    <div id="loader-pantalla" class="pantalla-carga-gestion" style="display: block;">
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+        <p>Verificando credenciales de administrador...</p>
+    </div>
+    <!-- Contenido Principal (oculto hasta verificar sesión) -->
+    <div id="contenido-gestion-dashboard" class="contenedor-gestion" style="display: none;">
+        <div class="gestion-cabecera">
+            <h1 class="gestion-titulo"><i class="fa fa-users" style="color: var(--color-principal);"></i> Gestión de Usuarios</h1>
+            <div class="gestion-acciones-top">
+                <a href="../index.html" class="btn-volver-catalogo">
+                    <i class="fa fa-arrow-left"></i> Volver al Catálogo
+                </a>
+            </div>
+        </div>
+        
+        <div class="gestion-buscador-contenedor" style="margin-bottom: 20px; display: flex; align-items: center; background: #fff; padding: 12px 18px; border: 2px solid #000; border-radius: 12px; box-shadow: 4px 4px 0px #000;">
+            <i class="fa fa-search" style="color: #666; font-size: 1.2rem; margin-right: 12px;"></i>
+            <input type="text" id="buscador-usuarios" placeholder="Buscar por nombre o correo electrónico..." style="flex: 1; border: none; outline: none; font-size: 1rem; font-family: 'Outfit', sans-serif;">
+        </div>
+
+        <div class="tabla-productos-wrapper">
+            <table class="tabla-productos-gestion">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-body">
+                    <!-- Dinámico -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Contenedor del Modal de Compras -->
+    <div id="modal-container-dashboard"></div>
+    <!-- Template del Modal de Compras -->
+    <template id="plantilla-modal-compras-usuario">
+        <div class="modal" id="modal-compras-usuario">
+            <div class="contenido-modal modal-compras-avanzado">
+                <span class="cerrar-modal">&times;</span>
+                <h2 class="modal-login-titulo" id="titulo-compras-usuario" style="margin-bottom: 20px;"><i class="fa fa-shopping-bag"></i> Historial de Compras</h2>
+                <div class="filtros-compras-contenedor" style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div class="gestion-buscador-contenedor" style="flex: 1; min-width: 200px; display: flex; align-items: center; background: #fff; padding: 10px 15px; border: 2px solid #000; border-radius: 12px; box-shadow: 3px 3px 0px #000;">
+                        <i class="fa fa-search" style="color: #666; font-size: 1.1rem; margin-right: 10px;"></i>
+                        <input type="text" id="buscador-compras-codigo" placeholder="Buscar por código..." style="flex: 1; border: none; outline: none; font-size: 0.95rem; font-family: 'Outfit', sans-serif;">
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border: 2px solid #000; border-radius: 12px; box-shadow: 3px 3px 0px #000;">
+                        <input type="date" id="filtro-compras-fecha" style="border: none; outline: none; font-size: 0.95rem; font-family: 'Outfit', sans-serif; cursor: pointer; color: #555;">
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border: 2px solid #000; border-radius: 12px; box-shadow: 3px 3px 0px #000;">
+                        <select id="filtro-compras-estado" style="border: none; outline: none; font-size: 0.95rem; font-family: 'Outfit', sans-serif; cursor: pointer; background: transparent; color: #555;">
+                            <option value="">Todos los estados</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="entregado">Entregado</option>
+                            <option value="en tránsito">En tránsito</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="lista-compras-contenedor" style="max-height: 400px; overflow-y: auto; padding-right: 5px;">
+                    <!-- Se carga dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config/supabase-config.js"></script>
+    <script src="../js/views/gestion-usuarios.js"></script>
+</body>
+</html>
+
